@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
       number: {
         title: 'Parcel #',
         sort: true
-        },
+      },
       address: {
         title: 'Address',
         sort: true
@@ -57,7 +57,13 @@ export class AppComponent implements OnInit {
       },
       lucId: {
         title: 'LUC',
-        sort: true
+        sort: true,
+        valuePrepareFunction: (lucId: number) => {
+          const lucOption = this.lucOptions.find(luc => luc.id === lucId);
+          return lucOption
+            ? lucOption.name
+            : 'N/A';
+        }
       },
       appraisal: {
         title: 'Appraisal Amt',
