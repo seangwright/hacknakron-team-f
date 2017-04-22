@@ -67,7 +67,10 @@ export class AppComponent implements OnInit {
       },
       appraisal: {
         title: 'Appraisal Amt',
-        sort: true
+        sort: true,
+        valuePrepareFunction: (value: number) => {
+          return `$${(Math.round(value * 100) / 100).toFixed(2)}`;
+        }
       },
       lastSaleDate: {
         title: 'Last Sale Date',
@@ -75,7 +78,10 @@ export class AppComponent implements OnInit {
       },
       lastSaleAmount: {
         title: 'Last Sale Amt',
-        sort: true
+        sort: true,
+        valuePrepareFunction: (value: number) => {
+          return `$${(Math.round(value * 100) / 100).toFixed(2)}`;
+        }
       },
       pricePerSqft: {
         title: '$/Sq. Ft.',
