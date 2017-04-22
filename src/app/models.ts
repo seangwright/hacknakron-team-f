@@ -11,7 +11,7 @@ export interface ParcelResponse {
     areaSqft: number;
     lucId: number;
     appraisal: number;
-    lastSaleDate: Date;
+    lastSaleDate: string;
     lastSaleAmount: number;
     pricePerSqft: number;
 }

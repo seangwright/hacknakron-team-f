@@ -18,7 +18,7 @@ export class ApiService {
     areaAcres: 10,
     lucId: 1,
     appraisal: 12000,
-    lastSaleDate: new Date(),
+    lastSaleDate: new Date().toLocaleDateString(),
     pricePerSqft: 0,
     lastSaleAmount: 1200
   }, {
@@ -29,7 +29,7 @@ export class ApiService {
     areaAcres: 1,
     lucId: 2,
     appraisal: 12000,
-    lastSaleDate: new Date(),
+    lastSaleDate: new Date().toLocaleDateString(),
     pricePerSqft: 0,
     lastSaleAmount: 12023
   }, {
@@ -40,7 +40,7 @@ export class ApiService {
     areaAcres: 23,
     lucId: 3,
     appraisal: 12000,
-    lastSaleDate: new Date(),
+    lastSaleDate: new Date().toLocaleDateString(),
     pricePerSqft: 0,
     lastSaleAmount: 120223
   }];
