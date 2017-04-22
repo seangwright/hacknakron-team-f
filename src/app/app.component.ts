@@ -12,7 +12,7 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Search Parcels by Land use Code';
+  title = 'Search Parcels by Land Use Code';
   optionsModel: number[];
 
   myOptions: IMultiSelectOption[] = [];
@@ -26,6 +26,13 @@ export class AppComponent implements OnInit {
   smartTableSettings: any = {
     pager: {
       display: false
+    },
+    hideSubHeader: true,
+    actions: {
+      columnTitle: '',
+      add: false,
+      edit: false,
+      delete: false
     },
     columns: {
       number: {
