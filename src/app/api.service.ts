@@ -27,7 +27,7 @@ export class ApiService {
     postal: '34543',
     areaSqft: 1000,
     areaAcres: 1,
-    lucId: 10,
+    lucId: 2,
     appraisal: 12000,
     lastSaleDate: new Date(),
     pricePerSqft: 0,
@@ -38,7 +38,7 @@ export class ApiService {
     postal: '2342',
     areaSqft: 1000,
     areaAcres: 23,
-    lucId: 14,
+    lucId: 3,
     appraisal: 12000,
     lastSaleDate: new Date(),
     pricePerSqft: 0,
@@ -57,13 +57,13 @@ export class ApiService {
   }];
 
   private testOptions: LucOption[] = [{
-    id: 2343,
+    id: 1,
     name: 'Test 1',
   }, {
-    id: 3454,
+    id: 2,
     name: 'Test 2'
   }, {
-    id: 232,
+    id: 3,
     name: 'Test 3'
   }];
 
