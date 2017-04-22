@@ -13,6 +13,7 @@ export interface ParcelResponse {
     appraisal: number;
     lastSaleDate: Date;
     lastSaleAmount: number;
+    pricePerSqft: number;
 }
 
 export interface LucCategory {
