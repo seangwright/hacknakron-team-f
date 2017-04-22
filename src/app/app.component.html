@@ -30,7 +30,7 @@
     <!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
     <div class='panel'>
       <div id='parcel-list-container' class='row'>
-        <ng2-smart-table [settings]="smartTableSettings"></ng2-smart-table>
+        <ng2-smart-table [settings]="smartTableSettings" [source]="parcels"></ng2-smart-table>
       </div>
     </div>
 

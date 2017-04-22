@@ -4,6 +4,8 @@ import { IMultiSelectOption, IMultiSelectSettings } from 'angular-2-dropdown-mul
 import { ApiService } from './api.service';
 import { LucCategory, LucOption, ParcelResponse } from './models';
 
+import { LocalDataSource } from 'ng2-smart-table';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,6 +24,9 @@ export class AppComponent implements OnInit {
   lucOptions: LucOption[] = [];
 
   smartTableSettings: any = {
+    pager: {
+      display: false
+    },
     columns: {
       number: {
         title: 'Parcel #',
