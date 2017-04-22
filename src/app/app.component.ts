@@ -36,4 +36,15 @@ export class AppComponent implements OnInit {
     console.log(this.optionsModel);
   }
 
+  doSafeDivision(dividend: number, divisor:number): number{
+    if (divisor == 0.00)
+    {
+      return 0.00;
+    }
+    else
+    {
+      return dividend/divisor;
+    }
+  }
+
 }
