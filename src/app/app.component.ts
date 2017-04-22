@@ -10,7 +10,7 @@ import { LucCategory, LucOption, ParcelResponse } from './models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works!';
+  title = 'Search Parcels by Land use Code';
   optionsModel: number[];
 
   myOptions: IMultiSelectOption[] = [];
@@ -20,6 +20,52 @@ export class AppComponent implements OnInit {
   lucCategories: LucCategory[] = [];
   selectedCategory: number;
   lucOptions: LucOption[] = [];
+
+  smartTableSettings: any = {
+    columns: {
+      number: {
+        title: 'Parcel #',
+        sort: true
+        },
+      address: {
+        title: 'Address',
+        sort: true
+      },
+      postal: {
+        title: 'ZIP',
+        sort: true
+      },
+      areaAcres: {
+        title: 'Acreage',
+        sort: true
+      },
+      areaSqft: {
+        title: 'Sq. Ft.',
+        sort: true
+      },
+      lucId: {
+        title: 'LUC',
+        sort: true
+      },
+      appraisal: {
+        title: 'Appraisal Amt',
+        sort: true
+      },
+      lastSaleDate: {
+        title: 'Last Sale Date',
+        sort: true
+      },
+      lastSaleAmount: {
+        title: 'Last Sale Amt',
+        sort: true
+      },
+      pricePerSqft: {
+        title: '$/Sq. Ft.',
+        sort: true
+      }
+    }
+  }
+
   constructor(
     private apiService: ApiService
   ) { }
@@ -63,5 +109,6 @@ export class AppComponent implements OnInit {
       return dividend / divisor;
     }
   }
+
 
 }

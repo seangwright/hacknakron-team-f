@@ -1,66 +1,38 @@
 <div class='container'>
-<div id='main-wrapper' class='col-md-10'>
+  <div id='main-wrapper' class='col-md-10'>
 
-<h1 class='page-header'>
-  {{title}}
-</h1>
+    <h1 class='page-header'>
+      {{title}}
+    </h1>
 
-<div class='panel'>
-  <div class='row'>
-<!-- Prompt user to select a Land Use Code category -->
-<div class="col-md-4">
-<span>Do this first: </span>
-  <div class="form-group">
-    <select [(ngModel)]="selectedCategory" class="form-control" (change)="searchLucOptions()">
+    <div class='panel'>
+      <div class='row'>
+        <!-- Prompt user to select a Land Use Code category -->
+        <div class="col-md-4">
+          <span>Do this first: </span>
+          <div class="form-group">
+            <select [(ngModel)]="selectedCategory" class="form-control" (change)="searchLucOptions()">
       <option *ngFor="let category of lucCategories" [ngValue]="category.code">{{ category.name }}</option>
     </select>
-  </div>
-</div>
-<div class="col-md-1"></div>
-  <div class="col-md-5">
-    <span>Then do this: </span>
-      <ss-multiselect-dropdown
-        [options]="lucOptions"
-        [(ngModel)]="myOptions"
-        [settings]="multiSelectSettings">
-      </ss-multiselect-dropdown>
-  </div>
-  <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
-</div>
-</div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <span>Then do this: </span>
+          <ss-multiselect-dropdown [options]="lucOptions" [(ngModel)]="myOptions" [settings]="multiSelectSettings">
+          </ss-multiselect-dropdown>
+        </div>
+        <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
+      </div>
+    </div>
 
 
-<!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
-<div class='panel'>
-  <div id='parcel-list-container' class='row'>
-    <table id='parcel-table' class='table-striped table-bordered col-md-12'>
-      <tr>
-        <th>Parcel #</th>
-        <th>Address</th>
-        <th>ZIP Code</th>
-        <th>Acreage</th>
-        <th>Sq. Ft.</th>
-        <th>LUC</th>
-        <th>Appraisal</th>
-        <th>Last Sale Date</th>
-        <th>Last Sale Amount</th>
-        <th>Price/Sq.ft</th>
-      </tr>
-      <tr *ngFor="let item of parcels">
-        <td>{{item.number}}</td>
-        <td>{{item.address}}</td>
-        <td>{{item.postal}}</td>
-        <td>{{item.areaAcres}</td>
-        <td>{{item.areaSqft}}</td>
-        <td>{{item.lucId}}</td>
-        <td>{{item.appraisal}}</td>
-        <td>{{item.lastSaleDate}}</td>
-        <td>{{item.lastSaleAmount}}</td>
-        <td>{{doSafeDivision(item.lastSaleAmount, item.areaSqft)}}</td>
-      </tr>
-    </table>
-  </div>
-</div>
+    <!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
+    <div class='panel'>
+      <div id='parcel-list-container' class='row'>
+        <ng2-smart-table [settings]="smartTableSettings"></ng2-smart-table>
+      </div>
+    </div>
 
-</div>
+  </div>
 </div>
