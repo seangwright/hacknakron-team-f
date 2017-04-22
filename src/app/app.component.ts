@@ -13,9 +13,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class AppComponent implements OnInit {
   title = 'Search Parcels by Land Use Code';
-  optionsModel: number[] = [];
-
-  myOptions: IMultiSelectOption[] = [];
+  myOptions: number[] = [];
   multiSelectSettings: IMultiSelectSettings = {};
 
   parcels: LocalDataSource = undefined;
@@ -125,10 +123,7 @@ export class AppComponent implements OnInit {
   searchParcels() {
     this.parcels = undefined;
 
-    const ids = this.myOptions
-      .map(o => o.id);
-
-    this.apiService.getParcelsByLucCodes(ids)
+    this.apiService.getParcelsByLucCodes(this.myOptions)
       .subscribe(parcels => {
         this.parcels = new LocalDataSource(parcels);
       });
