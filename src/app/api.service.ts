@@ -97,16 +97,22 @@ export class ApiService {
     return (!environment.production
       ? Observable.of(this.testParcles)
       : this.http.get(`${environment.baseApiUrl}parcels/${codes}`)
-        .map(resp => resp.json()))
+        .map(resp => resp.json())
+        .map(parcels => {
+          parcels.forEach(p => {
+            p.number = p.parcel_id;
+            p.postal = p.zip_code;
+            p.areaAcres = p.acres;
+            p.lucId = p.land_use_code_id;
+            p.price = p.appraisal;
+          });
+
+          return parcels;
+        }))
       .map(parcels => {
         parcels.forEach((p: any) => {
           // Map from api response to client app model
           p.pricePerSqft = this.doSafeDivision(p.lastSaleAmount, p.areaSqft);
-          p.number = p.parcel_id;
-          p.postal = p.zip_code;
-          p.areaAcres = p.acres;
-          p.lucId = p.land_use_code_id;
-          p.price = p.appraisal;
           return p;
         });
 
