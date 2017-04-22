@@ -1,13 +1,10 @@
 <div class='container'>
   <div id='main-wrapper' class='col-md-12'>
-
     <h1 class='page-header'>
       {{title}}
     </h1>
-
     <div class='panel'>
       <div class='row'>
-        <!-- Prompt user to select a Land Use Code category -->
         <div class="col-md-4">
           <span>Do this first: </span>
           <div class="form-group">
@@ -25,14 +22,10 @@
         <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
       </div>
     </div>
-
-
-    <!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
-    <div class='panel'>
-      <div id='parcel-list-container' class='row'>
+    <div class='panel' id='parcel-list-container'>
+      <div class='row'>
         <ng2-smart-table [settings]="smartTableSettings" [source]="parcels"></ng2-smart-table>
       </div>
     </div>
-
   </div>
 </div>
