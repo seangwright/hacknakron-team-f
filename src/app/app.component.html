@@ -13,18 +13,19 @@
             </select>
           </div>
         </div>
-        <div class="col-md-1"></div>
-        <div *ngIf="selectedCategory" class="col-md-5">
+        </div>
+        <div class='row'>
+        <div *ngIf="selectedCategory" class="col-md-4">
           <span>Select Land Use Option(s): </span>
           <ss-multiselect-dropdown [options]="lucOptions" [(ngModel)]="myOptions" [settings]="multiSelectSettings">
           </ss-multiselect-dropdown>
         </div>
       </div>
       <div class="row">
-        <div  *ngIf="myOptions.length > 0" class="col-md-4">
+        <div  *ngIf="myOptions.length > 0" class="col-md-2">
           <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
           <button class="btn" (click)="resetData()">Reset</button>
         </div>
       </div>
