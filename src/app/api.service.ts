@@ -15,17 +15,17 @@ export class ApiService {
   ) { }
 
   getLucCategories(): Observable<LucCategory[]> {
-    return this.http.get(`${environment.baseApiUrl}/categories`)
+    return this.http.get(`${environment.baseApiUrl}categories`)
       .map(resp => resp.json() as LucCategory[]);
   }
 
   getLucOptions(lucCategoryCode: string): Observable<LucOption[]> {
-    return this.http.get(`${environment.baseApiUrl}/land_use_codes/${lucCategoryCode}`)
+    return this.http.get(`${environment.baseApiUrl}land_use_codes/${lucCategoryCode}`)
       .map(resp => resp.json() as LucOption[]);
   }
 
-  getParcelByLucCode(lucCode: string): Observable<ParcelResponse> {
-    return this.http.get(`${environment.baseApiUrl}/parcel`, { params: { lucCode }})
+  getParcelsByLucCodes(lucCodes: number[]): Observable<ParcelResponse[]> {
+    return this.http.get(`${environment.baseApiUrl}parcel`, { params: { lucCodes }})
       .map(resp => resp.json());
   }
 
