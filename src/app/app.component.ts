@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   myOptions: IMultiSelectOption[] = [];
   multiSelectSettings: IMultiSelectSettings = {};
 
-  parcels: ParcelResponse[] = [];
+  parcels: LocalDataSource;
   lucCategories: LucCategory[] = [];
   selectedCategory: number;
   lucOptions: LucOption[] = [];
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
     this.apiService.getParcelsByLucCodes(ids)
       .subscribe(parcels => {
-        this.parcels = parcels;
+        this.parcels = new LocalDataSource(parcels);
       });
   }
 
