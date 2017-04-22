@@ -90,8 +90,10 @@ export class ApiService {
   }
 
   getParcelsByLucCodes(lucCodes: number[]): Observable<ParcelResponse[]> {
+    const codes = lucCodes.join(',');
+
     return (Observable.of(this.testParcles) ||
-      this.http.get(`${environment.baseApiUrl}parcel`, { params: { lucCodes } })
+      this.http.get(`${environment.baseApiUrl}parcels/${codes}`)
         .map(resp => resp.json() as ParcelResponse[]))
       .map(parcels => {
         parcels.forEach(p => {
