@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
+import { IMultiSelectOption, IMultiSelectSettings } from 'angular-2-dropdown-multiselect';
 
 import { ApiService } from './api.service';
 
@@ -13,11 +13,20 @@ export class AppComponent implements OnInit {
   optionsModel: number[];
 
   myOptions: IMultiSelectOption[] = [];
+  multiSelectSettings: IMultiSelectSettings = {};
   constructor(
     private apiService: ApiService
   ) { }
 
   ngOnInit() {
+    this.multiSelectSettings = {
+      enableSearch: true,
+      checkedStyle: 'fontawesome',
+      buttonClasses: 'btn btn-default btn-block',
+      dynamicTitleMaxItems: 3,
+      displayAllSelectedText: true
+    };
+
     this.myOptions = [
       { id: 1, name: 'Option 1' },
       { id: 2, name: 'Option 2' },
