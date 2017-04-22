@@ -21,7 +21,7 @@ export class ApiService {
     address: '4565 main st.'
   }];
 
-  private testCategories = [{
+  private testCategories: LucCategory[] = [{
     code: 'C',
     name: 'Commercial'
   }, {
@@ -32,14 +32,15 @@ export class ApiService {
     name: 'Parking'
   }];
 
-  private testOptions = [{
+  private testOptions: LucOption[] = [{
     id: 2343,
-    description: 'Test 1'
+    name: 'Test 1'
   }, {
     id: 3454,
-    description: 'Test 2'
+    name: 'Test 2'
   }, {
-    description: 'Test 3'
+    id: 232,
+    name: 'Test 3'
   }];
 
   constructor(
@@ -52,7 +53,7 @@ export class ApiService {
         .map(resp => resp.json() as LucCategory[]);
   }
 
-  getLucOptions(lucCategoryCode: string): Observable<LucOption[]> {
+  getLucOptions(lucCategoryCode: number): Observable<LucOption[]> {
     return Observable.of(this.testOptions) ||
       this.http.get(`${environment.baseApiUrl}land_use_codes/${lucCategoryCode}`)
         .map(resp => resp.json() as LucOption[]);

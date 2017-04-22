@@ -11,21 +11,21 @@
 <div class="col-md-4">
 <span>Do this first: </span>
   <div class="form-group">
-    <select [(ngModel)]="selectedCategory" class="form-control">
+    <select [(ngModel)]="selectedCategory" class="form-control" (change)="searchLucOptions()">
       <option *ngFor="let category of lucCategories" [ngValue]="category.code">{{ category.name }}</option>
     </select>
   </div>
 </div>
 <div class="col-md-1"></div>
-<div class="col-md-5">
-  <span>Then do this: </span>
-    <ss-multiselect-dropdown
-      [options]="myOptions"
-      [(ngModel)]="optionsModel"
-      (ngModelChange)="onChange($event)"
-      [settings]="multiSelectSettings">
-    </ss-multiselect-dropdown>
-    </div>
+  <div class="col-md-5">
+    <span>Then do this: </span>
+      <ss-multiselect-dropdown
+        [options]="lucOptions"
+        [(ngModel)]="myOptions"
+        [settings]="multiSelectSettings">
+      </ss-multiselect-dropdown>
+  </div>
+  <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
 </div>
 </div>
 

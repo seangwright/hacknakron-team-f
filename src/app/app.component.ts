@@ -16,10 +16,10 @@ export class AppComponent implements OnInit {
   myOptions: IMultiSelectOption[] = [];
   multiSelectSettings: IMultiSelectSettings = {};
 
-  parcels: ParcelResponse[];
-  lucCategories: LucCategory[];
+  parcels: ParcelResponse[] = [];
+  lucCategories: LucCategory[] = [];
   selectedCategory: number;
-  lucOptions: LucOption[];
+  lucOptions: LucOption[] = [];
   constructor(
     private apiService: ApiService
   ) { }
@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
       enableSearch: true,
       checkedStyle: 'fontawesome',
       buttonClasses: 'btn btn-default btn-block',
-      dynamicTitleMaxItems: 3,
       displayAllSelectedText: true
     };
 
@@ -40,27 +39,28 @@ export class AppComponent implements OnInit {
   }
 
   searchLucOptions() {
-    this.apiService.getLucOptions('')
+    this.apiService.getLucOptions(this.selectedCategory)
       .subscribe(options => {
         this.lucOptions = options;
       });
   }
 
   searchParcels() {
-    this.apiService.getParcelsByLucCodes(this.optionsModel)
+    const ids = this.myOptions
+      .map(o => o.id);
+
+    this.apiService.getParcelsByLucCodes(ids)
       .subscribe(parcels => {
         this.parcels = parcels;
       });
   }
 
-  doSafeDivision(dividend: number, divisor:number): number{
-    if (divisor == 0.00)
-    {
+  doSafeDivision(dividend: number, divisor: number): number {
+    if (divisor == 0.00) {
       return 0.00;
     }
-    else
-    {
-      return dividend/divisor;
+    else {
+      return dividend / divisor;
     }
   }
 

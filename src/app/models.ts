@@ -1,6 +1,6 @@
 export interface LucOption {
     id: number;
-    description: string;
+    name: string;
 }
 
 export interface ParcelResponse {
