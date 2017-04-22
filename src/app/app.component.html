@@ -1,5 +1,8 @@
 <div class='container'>
   <div id='main-wrapper' class='col-md-12'>
+    <div class='col-md-12 header-image'>
+      <img src="/assets/city-akron-skyline.jpg" />
+    </div>
     <h1 class='page-header'>
       {{title}}
     </h1>
@@ -31,7 +34,7 @@
       </div>
     </div>
     <!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
-    <div *ngIf="parcels?.data?.length > 0" class='panel' id='parcel-list-container'>
+    <div *ngIf="parcels" class='panel' id='parcel-list-container'>
       <div class='row'>
         <ng2-smart-table [settings]="smartTableSettings" [source]="parcels"></ng2-smart-table>
       </div>
