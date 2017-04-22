@@ -25,8 +25,9 @@ export class AppComponent implements OnInit {
 
   smartTableSettings: any = {
     pager: {
-      display: false
+      perPage: 50
     },
+    noDataMessage: 'Make selections above to view parcels.',
     hideSubHeader: true,
     actions: {
       columnTitle: '',
