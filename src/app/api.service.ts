@@ -74,13 +74,19 @@ export class ApiService {
   getLucCategories(): Observable<LucCategory[]> {
     return Observable.of(this.testCategories) ||
       this.http.get(`${environment.baseApiUrl}categories`)
-        .map(resp => resp.json() as LucCategory[]);
+        .map(resp => resp.json())
+        .map(categories => categories.map(c => {
+          return { id: c.id, code: c.use_class };
+        }));
   }
 
   getLucOptions(lucCategoryCode: number): Observable<LucOption[]> {
     return Observable.of(this.testOptions) ||
       this.http.get(`${environment.baseApiUrl}land_use_codes/${lucCategoryCode}`)
-        .map(resp => resp.json() as LucOption[]);
+        .map(resp => resp.json())
+        .map(options => options.map(o => {
+          return { id: o.id, name: o.label };
+        }));
   }
 
   getParcelsByLucCodes(lucCodes: number[]): Observable<ParcelResponse[]> {
