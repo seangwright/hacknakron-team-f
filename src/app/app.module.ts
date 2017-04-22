@@ -9,6 +9,8 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { ApiService } from './api.service';
 import { AppComponent } from './app.component';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,6 +19,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng2SmartTableModule,
 
     MultiselectDropdownModule,
     BsDropdownModule.forRoot()
