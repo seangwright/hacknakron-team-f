@@ -1,3 +1,15 @@
 ng2-smart-table {
     font-size: 18px;
 }
+
+.header-image {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background: rgba(240,240,240,0.25);
+}
+
+.header-image img {
+    display: inline-block;
+    margin: 0 auto;
+}
