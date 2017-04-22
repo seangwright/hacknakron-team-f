@@ -16,6 +16,8 @@ The Api returns all parcel data matching the specified Land Use options, includi
  * `npm install`
  * `npm start`
 
+The client app expects the API to be exposted at the `baseApiUrl` property specified in the `environment` object (`src/environments/environment.prod.ts`)
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
