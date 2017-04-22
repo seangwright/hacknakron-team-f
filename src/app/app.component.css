@@ -6,7 +6,6 @@ ng2-smart-table {
     width: 100%;
     text-align: center;
     padding: 10px;
-    background: rgba(240, 240, 240, 0.25);
 }
 
 .header-image img {
@@ -23,4 +22,8 @@ button {
     overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+}
+.footer {
+    height: 5rem;
+    background: red;
 }
