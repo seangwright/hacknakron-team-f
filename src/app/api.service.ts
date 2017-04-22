@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { environment } from '../environments/environment';
 
-import { LUCOption, ParcelResponse } from './models';
+import { LucCategory, LucOption, ParcelResponse } from './models';
 
 @Injectable()
 export class ApiService {
@@ -14,17 +14,17 @@ export class ApiService {
     private http: Http
   ) { }
 
-  getLUCOptions(): Observable<LUCOption[]> {
-    return this.http.get(`${environment.baseApiUrl}/LUCOption`)
-      .map(resp => resp.json());
+  getLucCategories(): Observable<LucCategory[]> {
+    return this.http.get(`${environment.baseApiUrl}/categories`)
+      .map(resp => resp.json() as LucCategory[]);
   }
 
-  getVacantParcel(): Observable<ParcelResponse> {
-    return this.http.get(`${environment.baseApiUrl}/vacant-parcel`)
-      .map(resp => resp.json());
+  getLucOptions(lucCategoryCode: string): Observable<LucOption[]> {
+    return this.http.get(`${environment.baseApiUrl}/land_use_codes/${lucCategoryCode}`)
+      .map(resp => resp.json() as LucOption[]);
   }
 
-  getParcelByLUCCode(lucCode: string): Observable<ParcelResponse> {
+  getParcelByLucCode(lucCode: string): Observable<ParcelResponse> {
     return this.http.get(`${environment.baseApiUrl}/parcel`, { params: { lucCode }})
       .map(resp => resp.json());
   }
