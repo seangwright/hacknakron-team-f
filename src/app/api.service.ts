@@ -72,8 +72,9 @@ export class ApiService {
   ) { }
 
   getLucCategories(): Observable<LucCategory[]> {
-    return Observable.of(this.testCategories) ||
-      this.http.get(`${environment.baseApiUrl}categories`)
+    return !environment.production
+      ? Observable.of(this.testCategories)
+      : this.http.get(`${environment.baseApiUrl}categories`)
         .map(resp => resp.json())
         .map(categories => categories.map(c => {
           return { id: c.id, code: c.use_class };
@@ -81,8 +82,9 @@ export class ApiService {
   }
 
   getLucOptions(lucCategoryCode: number): Observable<LucOption[]> {
-    return Observable.of(this.testOptions) ||
-      this.http.get(`${environment.baseApiUrl}land_use_codes/${lucCategoryCode}`)
+    return !environment.production
+      ? Observable.of(this.testOptions)
+      : this.http.get(`${environment.baseApiUrl}land_use_codes/${lucCategoryCode}`)
         .map(resp => resp.json())
         .map(options => options.map(o => {
           return { id: o.id, name: o.label };
@@ -92,8 +94,9 @@ export class ApiService {
   getParcelsByLucCodes(lucCodes: number[]): Observable<ParcelResponse[]> {
     const codes = lucCodes.join(',');
 
-    return (Observable.of(this.testParcles) ||
-      this.http.get(`${environment.baseApiUrl}parcels/${codes}`)
+    return (!environment.production
+      ? Observable.of(this.testParcles)
+      : this.http.get(`${environment.baseApiUrl}parcels/${codes}`)
         .map(resp => resp.json() as ParcelResponse[]))
       .map(parcels => {
         parcels.forEach(p => {
