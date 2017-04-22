@@ -52,19 +52,19 @@ export class ApiService {
     code: 'R',
     name: 'Residential'
   }, {
-    code: 'P',
-    name: 'Parking'
+    code: 'A',
+    name: 'Agriculture'
   }];
 
   private testOptions: LucOption[] = [{
     id: 1,
-    name: 'Test 1',
+    name: 'Residential, Vacant Land, Lot',
   }, {
     id: 2,
-    name: 'Test 2'
+    name: 'Single Family Dwelling, Platted Lot'
   }, {
     id: 3,
-    name: 'Test 3'
+    name: 'Single Family, O-9.99AC'
   }];
 
   constructor(
