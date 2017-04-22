@@ -13,14 +13,14 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class AppComponent implements OnInit {
   title = 'Search Parcels by Land Use Code';
-  optionsModel: number[];
+  optionsModel: number[] = [];
 
   myOptions: IMultiSelectOption[] = [];
   multiSelectSettings: IMultiSelectSettings = {};
 
-  parcels: LocalDataSource;
+  parcels: LocalDataSource = undefined;
   lucCategories: LucCategory[] = [];
-  selectedCategory: number;
+  selectedCategory = 0;
   lucOptions: LucOption[] = [];
 
   smartTableSettings: any = {
@@ -126,6 +126,13 @@ export class AppComponent implements OnInit {
       .subscribe(parcels => {
         this.parcels = new LocalDataSource(parcels);
       });
+  }
+
+  resetData() {
+    this.selectedCategory = 0;
+    this.lucOptions = [];
+    this.myOptions = [];
+    this.parcels = undefined;
   }
 
 }

@@ -9,26 +9,33 @@
       <div class='row'>
         <!-- Prompt user to select a Land Use Code category -->
         <div class="col-md-4">
-          <span>Do this first: </span>
+          <span>Select a Land Use Category: </span>
           <div class="form-group">
             <select [(ngModel)]="selectedCategory" class="form-control" (change)="searchLucOptions()">
-      <option *ngFor="let category of lucCategories" [ngValue]="category.code">{{ category.name }}</option>
-    </select>
+              <option *ngFor="let category of lucCategories" [ngValue]="category.code">{{ category.name }}</option>
+            </select>
           </div>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-5">
-          <span>Then do this: </span>
+        <div *ngIf="selectedCategory" class="col-md-5">
+          <span>Select Land Use Option(s): </span>
           <ss-multiselect-dropdown [options]="lucOptions" [(ngModel)]="myOptions" [settings]="multiSelectSettings">
           </ss-multiselect-dropdown>
         </div>
-        <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
+      </div>
+      <div class="row">
+        <div  *ngIf="myOptions.length > 0" class="col-md-4">
+          <input type="submit" class="btn" value="Search for Parcels" (click)="searchParcels()" />
+        </div>
+        <div class="col-md-4">
+          <button class="btn" (click)="resetData()">Reset</button>
+        </div>
       </div>
     </div>
 
 
     <!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
-    <div class='panel'>
+    <div *ngIf="parcels?.data?.length > 0" class='panel'>
       <div id='parcel-list-container' class='row'>
         <ng2-smart-table [settings]="smartTableSettings" [source]="parcels"></ng2-smart-table>
       </div>
