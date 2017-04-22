@@ -4,7 +4,8 @@ ng2-smart-table {
 
 button {overflow: hidden;}
 
-.btn { overflow: hidden;
+.btn { text-overflow: ellpsis;
+    overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     }
