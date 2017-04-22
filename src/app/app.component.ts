@@ -113,6 +113,9 @@ export class AppComponent implements OnInit {
   }
 
   searchLucOptions() {
+    this.lucOptions = [];
+    this.parcels = undefined;
+
     this.apiService.getLucOptions(this.selectedCategory)
       .subscribe(options => {
         this.lucOptions = options;
@@ -120,6 +123,8 @@ export class AppComponent implements OnInit {
   }
 
   searchParcels() {
+    this.parcels = undefined;
+
     const ids = this.myOptions
       .map(o => o.id);
 
