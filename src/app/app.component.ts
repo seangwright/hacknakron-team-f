@@ -66,7 +66,10 @@ export class AppComponent implements OnInit {
       },
       pricePerSqft: {
         title: '$/Sq. Ft.',
-        sort: true
+        sort: true,
+        valuePrepareFunction: (value: number) => {
+          return `$${(Math.round(value * 100) / 100).toFixed(2)}`;
+        }
       }
     }
   }
