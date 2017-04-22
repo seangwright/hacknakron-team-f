@@ -91,7 +91,7 @@ export class AppComponent implements OnInit {
         }
       }
     }
-  }
+  };
 
   constructor(
     private apiService: ApiService
@@ -127,15 +127,5 @@ export class AppComponent implements OnInit {
         this.parcels = new LocalDataSource(parcels);
       });
   }
-
-  doSafeDivision(dividend: number, divisor: number): number {
-    if (divisor == 0.00) {
-      return 0.00;
-    }
-    else {
-      return dividend / divisor;
-    }
-  }
-
 
 }
