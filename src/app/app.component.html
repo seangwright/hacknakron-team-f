@@ -1,3 +1,77 @@
-<h1>
+<div class='container'>
+<div id='main-wrapper' class='col-md-10'>
+
+<h1 class='page-header'>
   {{title}}
 </h1>
+
+<div class='panel'>
+  <div class='row'>
+<!-- Prompt user to select a Land Use Code category -->
+<div class="col-md-4">
+<span>Do this first: </span>
+<div dropdown>
+  <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+    Choose a Land Use Code Class <span class="caret"></span>
+  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li role="menuitem"><a class="dropdown-item" href="#">C - Commercial</a></li>
+  </ul>
+</div>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-5">
+  <span>Then do this: </span>
+    <ss-multiselect-dropdown
+      [options]="myOptions"
+      [(ngModel)]="optionsModel"
+      (ngModelChange)="onChange($event)">
+    </ss-multiselect-dropdown>
+    </div>
+</div>
+</div>
+
+
+<!-- Display list of parcels matching specified parameters. Assume empty lots when no LUC provided. -->
+<div class='panel'>
+  <div id='parcel-list-container' class='row'>
+    <table id='parcel-table' class='table-striped table-bordered col-md-12'>
+      <tr>
+        <th>
+          Parcel #
+        </th>
+        <th>
+          Address
+        </th>
+        <th>
+          ZIP Code
+        </th>
+        <th>
+          Acreage
+        </th>
+        <th>
+          Sq. Ft.
+        </th>
+        <th>
+          LUC
+        </th>
+        <th>
+          Appraisal
+        </th>
+        <th>
+          Last Sale Date
+        </th>
+        <th>
+          Last Sale Amount
+        </th>
+        <th>
+          Price/Sq.ft
+        </th>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+</div>
+</div>
