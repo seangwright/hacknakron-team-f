@@ -1,6 +1,9 @@
 ng2-smart-table {
     font-size: 18px;
 }
+
+button {overflow: hidden;}
+
 .btn { overflow: hidden;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
