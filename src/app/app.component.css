@@ -6,10 +6,21 @@ ng2-smart-table {
     width: 100%;
     text-align: center;
     padding: 10px;
-    background: rgba(240,240,240,0.25);
+    background: rgba(240, 240, 240, 0.25);
 }
 
 .header-image img {
     display: inline-block;
     margin: 0 auto;
+}
+
+button {
+    overflow: hidden;
+}
+
+.btn {
+    text-overflow: ellpsis;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
