@@ -27,6 +27,13 @@ export class AppComponent implements OnInit {
     pager: {
       display: false
     },
+    hideSubHeader: true,
+    actions: {
+      columnTitle: '',
+      add: false,
+      edit: false,
+      delete: false
+    },
     columns: {
       number: {
         title: 'Parcel #',
