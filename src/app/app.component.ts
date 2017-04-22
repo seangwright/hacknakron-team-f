@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IMultiSelectOption, IMultiSelectSettings } from 'angular-2-dropdown-multiselect';
 
 import { ApiService } from './api.service';
+import { LucCategory, LucOption, ParcelResponse } from './models';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,11 @@ export class AppComponent implements OnInit {
 
   myOptions: IMultiSelectOption[] = [];
   multiSelectSettings: IMultiSelectSettings = {};
+
+  parcels: ParcelResponse[];
+  lucCategories: LucCategory[];
+  selectedCategory: number;
+  lucOptions: LucOption[];
   constructor(
     private apiService: ApiService
   ) { }
@@ -27,13 +33,24 @@ export class AppComponent implements OnInit {
       displayAllSelectedText: true
     };
 
-    this.myOptions = [
-      { id: 1, name: 'Option 1' },
-      { id: 2, name: 'Option 2' },
-    ];
+    this.apiService.getLucCategories()
+      .subscribe(categories => {
+        this.lucCategories = categories;
+      });
   }
-  onChange() {
-    console.log(this.optionsModel);
+
+  searchLucOptions() {
+    this.apiService.getLucOptions('')
+      .subscribe(options => {
+        this.lucOptions = options;
+      });
+  }
+
+  searchParcels() {
+    this.apiService.getParcelsByLucCodes(this.optionsModel)
+      .subscribe(parcels => {
+        this.parcels = parcels;
+      });
   }
 
 }
