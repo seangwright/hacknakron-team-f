@@ -10,15 +10,39 @@ import { LucCategory, LucOption, ParcelResponse } from './models';
 
 @Injectable()
 export class ApiService {
-  private testParcles = [{
-    number: 1,
-    address: '12 test st.'
+  private testParcles: ParcelResponse[] = [{
+    number: '1',
+    address: '12 test st.',
+    postal: '53454',
+    areaSqft: 1000,
+    areaAcres: 10,
+    lucId: 1,
+    appraisal: 12000,
+    lastSaleDate: new Date(),
+    pricePerSqft: 0,
+    lastSaleAmount: 1200
   }, {
-    number: 2,
-    address: '2343 test st.'
+    number: '2',
+    address: '2343 test st.',
+    postal: '34543',
+    areaSqft: 1000,
+    areaAcres: 1,
+    lucId: 10,
+    appraisal: 12000,
+    lastSaleDate: new Date(),
+    pricePerSqft: 0,
+    lastSaleAmount: 12023
   }, {
-    number: 3,
-    address: '4565 main st.'
+    number: '3',
+    address: '4565 main st.',
+    postal: '2342',
+    areaSqft: 1000,
+    areaAcres: 23,
+    lucId: 14,
+    appraisal: 12000,
+    lastSaleDate: new Date(),
+    pricePerSqft: 0,
+    lastSaleAmount: 120223
   }];
 
   private testCategories: LucCategory[] = [{
@@ -34,7 +58,7 @@ export class ApiService {
 
   private testOptions: LucOption[] = [{
     id: 2343,
-    name: 'Test 1'
+    name: 'Test 1',
   }, {
     id: 3454,
     name: 'Test 2'
@@ -59,10 +83,26 @@ export class ApiService {
         .map(resp => resp.json() as LucOption[]);
   }
 
-  getParcelsByLucCodes(lucCodes: number[]): Observable<any[]> {
-    return Observable.of(this.testParcles) ||
+  getParcelsByLucCodes(lucCodes: number[]): Observable<ParcelResponse[]> {
+    return (Observable.of(this.testParcles) ||
       this.http.get(`${environment.baseApiUrl}parcel`, { params: { lucCodes } })
-        .map(resp => resp.json());
+        .map(resp => resp.json() as ParcelResponse[]))
+      .map(parcels => {
+        parcels.forEach(p => {
+          p.pricePerSqft = this.doSafeDivision(p.lastSaleAmount, p.areaSqft);
+          return p;
+        });
+
+        return parcels;
+      });
+  }
+
+  private doSafeDivision(dividend: number, divisor: number): number {
+    if (!divisor) {
+      return 0;
+    } else {
+      return dividend / divisor;
+    }
   }
 
 }
